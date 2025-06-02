@@ -76,11 +76,7 @@ WSGI_APPLICATION = "appointment_manager.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.dbsqlite3",
-        "NAME": "appointment_manager",
-        "USER": "postgres",
-        "PASSWORD": "Mft2025$$",
-        "HOST": "localhost",
-        "PORT": 5432
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
