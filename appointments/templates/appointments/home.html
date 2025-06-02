@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home - Medical Booking{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative bg-gray-800 text-white">
+  <img src="{% static 'appointments/img/hospital-hero.jpg' %}" alt="Hospital" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+  <div class="relative z-10 container mx-auto px-6 py-24 text-center">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Welcome to the Medical Appointment System</h1>
+    <p class="text-lg md:text-xl mb-6 max-w-3xl mx-auto">
+      Experience a seamless and user-friendly platform designed to connect patients with top healthcare professionals.
+      Our system ensures quick, easy, and reliable appointment booking, tailored to fit your busy lifestyle.
+      Say goodbye to long waits and complicated procedures — your health is our priority.
+    </p>
+    <a href="{% url 'appointments:booking' %}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition">
+      Book Your Appointment Now
+    </a>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-16 bg-white text-center">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-10 text-gray-800">Our Premium Services</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-gray-50 rounded-lg shadow p-6 hover:shadow-lg transition duration-300">
+        <img src="{% static 'appointments/img/clinic.jpg' %}" alt="Clinic" class="rounded-md mb-6 h-48 w-full object-cover">
+        <h3 class="text-xl font-semibold text-blue-700 mb-3">Specialist Clinics</h3>
+        <p class="text-gray-700 text-sm leading-relaxed">
+          Access a wide range of specialist clinics staffed by experienced and highly qualified doctors.
+          Whether you need general check-ups or specialized consultations, we connect you to the best care.
+        </p>
+      </div>
+      <div class="bg-gray-50 rounded-lg shadow p-6 hover:shadow-lg transition duration-300">
+        <img src="{% static 'appointments/img/operation-room.jpg' %}" alt="Operating Room" class="rounded-md mb-6 h-48 w-full object-cover">
+        <h3 class="text-xl font-semibold text-blue-700 mb-3">Modern Operating Rooms</h3>
+        <p class="text-gray-700 text-sm leading-relaxed">
+          Our facilities boast state-of-the-art operating rooms equipped with the latest surgical technologies,
+          ensuring the highest standards of safety and care during your procedures.
+        </p>
+      </div>
+      <div class="bg-gray-50 rounded-lg shadow p-6 hover:shadow-lg transition duration-300">
+        <img src="{% static 'appointments/img/pharmacy.jpg' %}" alt="Pharmacy" class="rounded-md mb-6 h-48 w-full object-cover">
+        <h3 class="text-xl font-semibold text-blue-700 mb-3">Online Pharmacy</h3>
+        <p class="text-gray-700 text-sm leading-relaxed">
+          Easily search for medicines, get detailed information, and place your orders online.
+          Our pharmacy service is designed to provide you convenience and fast delivery right to your doorstep.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

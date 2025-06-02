@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container">
+  <h1 class="large text-primary">
+    Doctors
+  </h1>
+  <p class="lead"><i class="fas fa-user"></i> Welcome to the doctors_list</p>
+
+  <div class="post-form">
+    <div class="post-form-header bg-primary">
+      <h3>Say Something...</h3>
+    </div>
+    <form class="form my-1" method="post" action="">
+      {% csrf_token %}
+      <textarea name="body" cols="30" rows="5" placeholder="Create a post"></textarea>
+      <input type="submit" value="Submit" class="btn btn-dark my-1" />
+    </form>
+  </div>
+
+  <div class="posts">
+    {% if posts %}
+      {% for post in posts %}
+      <div class="post bg-white my-1 p-1">
+        <div>
+          <a href="{% url 'appointments:doctors_detail' post.slug %}">
+            <img class="round-img" src="{{ post.author.picture.url }}" alt="{{ post.author.user.username }}" />
+            <h4>{{ post.author.user.username }}</h4>
+          </a>
+        </div>
+
+        <div>
+          <h3>{{ post.title }}</h3>
+          <p class="my-1">{{ post.body }}</p>
+
+          <button class="btn">
+            <i class="fas fa-thumbs-up"></i> <span>{{ post.like.count }}</span>
+          </button>
+          <button class="btn">
+            <i class="fas fa-thumbs-down"></i> <span>{{ post.dislike.count }}</span>
+          </button>
+
+          <a href="{% url 'appointments:doctors_detail' post.slug %}" class="btn btn-primary">
+            Discussion
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p>No posts to show.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock content %}

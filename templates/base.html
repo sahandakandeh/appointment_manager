@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Appointment Management{% endblock %}</title>
+
+    <!-- Roboto Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="{% static 'appointments/css/style.min.css' %}" />
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #0077cc;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+        nav a:hover,
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        main {
+            padding: 2rem;
+            min-height: 70vh;
+        }
+        footer {
+            background-color: #eee;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Appointment Booking System</h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'appointments:home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a>
+                </li>
+
+                {% if request.user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'appointments:doctors'  %}" class="{% if '/doctors/' in request.path %}active{% endif %}">Doctors</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'appointments:medicines' %}" class="{% if '/medicines' in request.path %}active{% endif %}">Medicines</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'appointments:booking' %}" class="{% if '/booking' in request.path %}active{% endif %}">New Appointment</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'appointments:logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'appointments:login' %}">Doctors</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'appointments:login' %}">Medicines</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'appointments:login' %}">New Appointment</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'appointments:login' %}" class="{% if '/login' in request.path %}active{% endif %}">Login</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'appointments:register' %}" class="{% if '/register' in request.path %}active{% endif %}">Register</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2025 Medical System — Designed by Sahand Akandeh</p>
+    </footer>
+</body>
+</html>

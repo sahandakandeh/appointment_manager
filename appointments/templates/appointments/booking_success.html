@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Booking Success{% endblock %}
+
+{% block content %}
+<div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-md text-center">
+    <h1 class="text-3xl font-bold text-green-600 mb-4">Your appointment has been successfully booked!</h1>
+    <p class="mb-6 text-gray-700">Thank you for choosing our service. We will contact you soon.</p>
+    <a href="{% url 'appointments:home' %}" 
+       class="inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition">
+       Back to Home
+    </a>
+</div>
+{% endblock %}
